@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BuyMe</string>
+    <string name="app_name">buyMe</string>
     <string name="title_activity_maps">Map</string>
-
+    <string name="title_activity_alert_list_view">Alerts</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Alerts...</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_alert">New Alert</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>
