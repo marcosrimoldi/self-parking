@@ -42,7 +42,7 @@ public class AlertListViewActivity extends ActionBarActivity implements AdapterV
         handleIntent(getIntent());
 
         moveDrawerToTop();
-        initActionBar() ;
+        initActionBar();
         initDrawer();
         //Quick cheat: Add Fragment 1 to default view
         onItemClick(null, null, 0, 0);
@@ -119,8 +119,11 @@ public class AlertListViewActivity extends ActionBarActivity implements AdapterV
 
         switch (item.getItemId()) {
             case R.id.action_alert:
-                // TODO implement createNewAlert();
                 Log.d("AlertListView", "Boton New Alert");
+                // TODO implement createNewAlert();
+                Intent intent = new Intent(this,AddAlarmActivity.class);
+                //start the second Activity
+                this.startActivity(intent);
                 return true;
             case R.id.action_search:
                 openSearch();

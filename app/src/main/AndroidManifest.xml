@@ -24,12 +24,20 @@
             android:label="@string/title_activity_alert_list_view" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
 
-            <meta-data android:name="android.app.searchable"
+            <meta-data
+                android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".AddAlarmActivity"
+            android:label="@string/title_activity_add_alarm"
+            android:parentActivityName=".AlertListViewActivity">
         </activity>
     </application>
 
