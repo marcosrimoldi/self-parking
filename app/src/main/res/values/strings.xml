@@ -13,5 +13,13 @@
     <string name="title_activity_add_alarm">Crear Recordatorio</string>
     <string name="alert_description">Descripción</string>
     <string name="alert_description_hint">Por ej. "Comprar comida" o "Pasar a buscar la cosa"</string>
+    <string name="alert_place">Donde?</string>
+    <string name="place_type_option">Tipo de lugar</string>
+    <string name="place_address_option">Lugar específico</string>
+    <string name="place_address_title">Dirección</string>
+    <string name="place_type_title">Elija el tipo de lugar</string>
+    <string name="due_date">Vencimiento</string>
+    <string name="from">Desde</string>
+    <string name="to">Hasta</string>
 
 </resources>
