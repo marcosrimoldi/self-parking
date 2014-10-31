@@ -31,6 +31,8 @@ public class AlertListViewActivity extends ActionBarActivity implements AdapterV
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    //private Intent mServiceIntent;
+
     // MARCOS: Drawer code copied from https://github.com/lemycanh/DrawerOnTopActionBar
 
     @Override
@@ -46,6 +48,10 @@ public class AlertListViewActivity extends ActionBarActivity implements AdapterV
         initDrawer();
         //Quick cheat: Add Fragment 1 to default view
         onItemClick(null, null, 0, 0);
+
+        // Have to run the service manually
+        Intent serviceIntent = new Intent(this, LocationPullService.class);
+        startService(serviceIntent);
 
     }
 
