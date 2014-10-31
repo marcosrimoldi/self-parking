@@ -60,7 +60,7 @@
             android:exported="false"/>
 
         <!--
-        This receiver is not working and that's why the service is being started from AlertListViewActivity onCreate
+        This receiver works on BOOT but currently the service is being started from AlertListViewActivity onCreate
         <receiver android:name=".LocationLoggerServiceManager"
             android:enabled="true"
             android:exported="false"
