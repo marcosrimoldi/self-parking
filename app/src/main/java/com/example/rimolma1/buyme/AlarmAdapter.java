@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by RIMOLMA1 on 10/31/2014.
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class AlarmAdapter extends ArrayAdapter<Alarm> {
 
     private Activity activity;
-    private ArrayList<Alarm> alarmList;
+    private List<Alarm> alarmList;
     private static LayoutInflater inflater = null;
 
     public AlarmAdapter(Activity activity, int textViewResourceId, ArrayList<Alarm> _alarmList) {
@@ -44,6 +45,11 @@ public class AlarmAdapter extends ArrayAdapter<Alarm> {
     public Alarm getItem(int position) {
         return getAlarm(position);
     }
+
+    public void setItemList(List<Alarm> alarms) {
+        this.alarmList = alarms;
+    }
+
 
     public static class ViewHolder {
         public TextView display_name;
@@ -76,8 +82,5 @@ public class AlarmAdapter extends ArrayAdapter<Alarm> {
         }
         return vi;
     }
-
-
-
 
 }

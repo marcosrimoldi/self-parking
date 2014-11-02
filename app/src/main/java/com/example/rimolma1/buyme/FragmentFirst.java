@@ -29,11 +29,13 @@ public class FragmentFirst extends Fragment {
         ArrayList<Alarm> myListItems  = new ArrayList<Alarm>();
 
         // Populate with hardcoded Alarms list
-        for (int i=0; i<10; i++) {
+        /*
+        for (int i=0; i<0; i++) {
             Alarm alarm = new Alarm();
             alarm.setDescription("Alarm " + i);
             myListItems.add(alarm);
         }
+        */
 
         alarmAdapter = new AlarmAdapter(this.getActivity(), 0, myListItems);
         listView.setAdapter(alarmAdapter);
@@ -59,6 +61,10 @@ public class FragmentFirst extends Fragment {
             }
 
         });
+
+        // Exec async load task
+        // Add properties file with API data
+        (new AsyncListViewLoader(this.getActivity(), alarmAdapter)).execute("http://192.168.0.101:8090/buy-me/rest/alert/userId/1/all");
 
         return view;
 

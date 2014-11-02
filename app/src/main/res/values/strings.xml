@@ -21,5 +21,6 @@
     <string name="due_date">Vencimiento</string>
     <string name="from">Desde</string>
     <string name="to">Hasta</string>
+    <string name="loading_data">Loading data...</string>
 
 </resources>
