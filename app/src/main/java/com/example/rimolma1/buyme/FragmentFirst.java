@@ -37,7 +37,7 @@ public class FragmentFirst extends Fragment {
         }
         */
 
-        alarmAdapter = new AlarmAdapter(this.getActivity(), 0, myListItems);
+        alarmAdapter = new AlarmAdapter(this.getActivity(), myListItems);
         listView.setAdapter(alarmAdapter);
 
         // ListView Item Click Listener
