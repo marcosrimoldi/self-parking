@@ -15,20 +15,20 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AsyncListViewLoader extends AsyncTask<String, Void, List<Alarm>> {
+public abstract class AsyncListViewLoader<T> extends AsyncTask<String, Void, List<T>> {
 
-    private AlarmAdapter adapter;
+    private CustomAdapter<T> adapter;
     private Activity activity;
     private ProgressDialog dialog;
 
-    AsyncListViewLoader(Activity activity, AlarmAdapter adapter) {
+    AsyncListViewLoader(Activity activity, CustomAdapter<T> adapter) {
         this.adapter = adapter;
         this.activity = activity;
         dialog = new ProgressDialog(activity);
     }
 
     @Override
-    protected void onPostExecute(List<Alarm> result) {
+    protected void onPostExecute(List<T> result) {
         super.onPostExecute(result);
         dialog.dismiss();
         adapter.setItemList(result);
@@ -43,8 +43,8 @@ public class AsyncListViewLoader extends AsyncTask<String, Void, List<Alarm>> {
     }
 
     @Override
-    protected List<Alarm> doInBackground(String... params) {
-        List<Alarm> result = new ArrayList<Alarm>();
+    protected List<T> doInBackground(String... params) {
+        List<T> result = new ArrayList<T>();
 
         try {
             URL u = new URL(params[0]);
@@ -66,7 +66,7 @@ public class AsyncListViewLoader extends AsyncTask<String, Void, List<Alarm>> {
 
             JSONArray arr = new JSONArray(JSONResp);
             for (int i=0; i < arr.length(); i++) {
-                result.add(convertAlarm(arr.getJSONObject(i)));
+                result.add(convertObject(arr.getJSONObject(i)));
             }
 
             return result;
@@ -77,11 +77,6 @@ public class AsyncListViewLoader extends AsyncTask<String, Void, List<Alarm>> {
         return null;
     }
 
-    private Alarm convertAlarm(JSONObject obj) throws JSONException {
-        Long id = obj.getLong("id");
-        String description = obj.getString("description");
-
-        return new Alarm(id, description);
-    }
+    public abstract T convertObject(JSONObject obj) throws JSONException;
 
 }

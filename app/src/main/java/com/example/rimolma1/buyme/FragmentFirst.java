@@ -64,7 +64,7 @@ public class FragmentFirst extends Fragment {
 
         // Exec async load task
         // Add properties file with API data
-        (new AsyncListViewLoader(this.getActivity(), alarmAdapter)).execute("http://192.168.0.101:8090/buy-me/rest/alert/userId/1/all");
+        (new AlarmAsyncListViewLoader(this.getActivity(), alarmAdapter)).execute("http://192.168.0.101:8090/buy-me/rest/alert/userId/1/all");
 
         return view;
 
