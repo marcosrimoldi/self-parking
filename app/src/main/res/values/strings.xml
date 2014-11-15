@@ -22,5 +22,6 @@
     <string name="from">Desde</string>
     <string name="to">Hasta</string>
     <string name="loading_data">Loading data...</string>
+    <string name="select_user_title">Para quién es?</string>
 
 </resources>

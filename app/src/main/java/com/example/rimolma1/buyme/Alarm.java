@@ -17,8 +17,7 @@ public class Alarm {
     public Alarm() {
     }
 
-    public Alarm(Long id, String description) {
-        this.id = id;
+    public Alarm(String description) {
         this.description = description;
     }
 

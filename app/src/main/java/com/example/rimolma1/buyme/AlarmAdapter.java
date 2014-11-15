@@ -30,14 +30,14 @@ public class AlarmAdapter extends CustomAdapter<Alarm> {
                 holder = new ViewHolder();
 
                 holder.display_name = (TextView) vi.findViewById(R.id.secondLine);
-                holder.display_number = (TextView) vi.findViewById(R.id.thirdLine);
+                //holder.display_number = (TextView) vi.findViewById(R.id.thirdLine);
                 vi.setTag(holder);
             } else {
                 holder = (ViewHolder) vi.getTag();
             }
 
-            holder.display_name.setText(Long.toString(getObjectList().get(position).getId()));
-            holder.display_number.setText(getObjectList().get(position).getDescription());
+            holder.display_name.setText(getObjectList().get(position).getDescription());
+            //holder.display_number.setText(getObjectList().get(position).getDescription());
 
 
         } catch (Exception e) {

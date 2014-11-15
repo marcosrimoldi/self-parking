@@ -13,10 +13,18 @@ public class AlarmAsyncListViewLoader extends AsyncListViewLoader<Alarm> {
 
     @Override
     public Alarm convertObject(JSONObject obj) throws JSONException {
-        Long id = obj.getLong("id");
-        String description = obj.getString("description");
+       /* Map<String,String> map = new HashMap<String,String>();
+        Iterator iter = obj.keys();
+        while(iter.hasNext()){
+            String key = (String)iter.next();
+            String value = obj.getString(key);
+            map.put(key,value);
+        }
 
-        return new Alarm(id, description);
+        String title = map.get("title");
+        String description = map.get("description");
+*/
+        return new Alarm(obj.getString("location"));
     }
 
 }
