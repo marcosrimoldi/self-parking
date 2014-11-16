@@ -6,6 +6,7 @@ import android.location.Location;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.StrictMode;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -14,6 +15,19 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -67,6 +81,14 @@ public class LocationPullService extends Service implements GooglePlayServicesCl
     public void onCreate() {
         super.onCreate();
 
+        int SDK_INT = android.os.Build.VERSION.SDK_INT;
+        if (SDK_INT > 8)
+        {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                    .permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            //your codes here
+        }
 
         mInProgress = false;
         // Create the LocationRequest object
@@ -135,8 +157,9 @@ public class LocationPullService extends Service implements GooglePlayServicesCl
         String msg = Double.toString(location.getLatitude()) + "," +
                 Double.toString(location.getLongitude());
         Log.d("debug", msg);
-        // Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        appendLog(msg, LOCATION_FILE);
+
+        //appendLog(msg, LOCATION_FILE);
+        postLocation(location);
     }
 
     @Override
@@ -189,7 +212,6 @@ public class LocationPullService extends Service implements GooglePlayServicesCl
             mLocationClient = null;
         }
         // Display the connection status
-        // Toast.makeText(this, DateFormat.getDateTimeInstance().format(new Date()) + ": Disconnected. Please re-connect.", Toast.LENGTH_SHORT).show();
         appendLog(DateFormat.getDateTimeInstance().format(new Date()) + ": Stopped", LOG_FILE);
         super.onDestroy();
     }
@@ -219,7 +241,6 @@ public class LocationPullService extends Service implements GooglePlayServicesCl
         // Destroy the current location client
         mLocationClient = null;
         // Display the connection status
-        // Toast.makeText(this, DateFormat.getDateTimeInstance().format(new Date()) + ": Disconnected. Please re-connect.", Toast.LENGTH_SHORT).show();
         appendLog(DateFormat.getDateTimeInstance().format(new Date()) + ": Disconnected", LOG_FILE);
     }
 
@@ -242,6 +263,40 @@ public class LocationPullService extends Service implements GooglePlayServicesCl
             // If no resolution is available, display an error dialog
         } else {
 
+        }
+    }
+
+    private void postLocation(Location location) {
+        int TIMEOUT_MILLISEC = 10000;  // = 10 seconds
+        HttpParams httpParams = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(httpParams, TIMEOUT_MILLISEC);
+        HttpConnectionParams.setSoTimeout(httpParams, TIMEOUT_MILLISEC);
+        HttpClient client = new DefaultHttpClient(httpParams);
+
+        HttpPost request = new HttpPost(Constants.POST_NEW_ALARM);
+        request.setHeader("Content-type", "application/json");
+
+        JSONObject alertJSON = new JSONObject();
+        try {
+            alertJSON.put("userId", Constants.userID);
+            alertJSON.put("latitude", location.getLatitude());
+            alertJSON.put("longitude", location.getLongitude());
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        try {
+            StringEntity se = new StringEntity( alertJSON.toString(), HTTP.UTF_8);
+            se.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+            request.setEntity(se);
+
+            //request.setEntity(new ByteArrayEntity(alertJSON.toString().getBytes("UTF8")));
+            HttpResponse response = client.execute(request);
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 
