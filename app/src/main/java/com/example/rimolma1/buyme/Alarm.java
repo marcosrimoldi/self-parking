@@ -1,15 +1,17 @@
 package com.example.rimolma1.buyme;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by RIMOLMA1 on 10/31/2014.
  */
-public class Alarm {
+public class Alarm implements Serializable {
 
     private Long id;
     private String description;
-    private String place; // this has to be an object
+    private String location; // this has to be an object
+    private User creator;
     private Date dueDate;
     private Date from;
     private Date to;
@@ -37,12 +39,12 @@ public class Alarm {
         this.description = description;
     }
 
-    public String getPlace() {
-        return place;
+    public String getLocation() {
+        return location;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Date getDueDate() {
@@ -67,5 +69,13 @@ public class Alarm {
 
     public void setTo(Date to) {
         this.to = to;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 }

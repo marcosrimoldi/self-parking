@@ -184,10 +184,17 @@ public class AlertListViewActivity extends ActionBarActivity implements AdapterV
         mDrawerLayout.closeDrawer(mDrawerList);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ftx = fragmentManager.beginTransaction();
-        if(position == 0) {
-            ftx.replace(R.id.main_content, new FragmentFirst());
-        } else if(position == 1) {
-            ftx.replace(R.id.main_content, new FragmentSecond());
+
+        switch (position) {
+            case 0:
+                ftx.replace(R.id.main_content, new FragmentFirst());
+                break;
+            case 5:
+                ftx.replace(R.id.main_content, new FragmentSecond());
+                 break;
+            default:
+                ftx.replace(R.id.main_content, new FragmentFirst());
+                break;
         }
         ftx.commit();
     }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 public abstract class CustomAdapter<T> extends ArrayAdapter<T> {
 
     private Activity activity;
-    private List<T> objectList;
+    private List<T> objectList = new ArrayList<T>();
     protected static LayoutInflater inflater = null;
 
     public CustomAdapter(Activity activity, List<T> objects) {

@@ -34,6 +34,6 @@ public class User {
 
     @Override
     public String toString() {
-        return getName();
+        return getId().equals(Constants.userID) ? "Para mi!" : getName();
     }
 }

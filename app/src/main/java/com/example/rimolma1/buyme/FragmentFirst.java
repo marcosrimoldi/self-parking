@@ -1,5 +1,6 @@
 package com.example.rimolma1.buyme;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -54,9 +54,13 @@ public class FragmentFirst extends Fragment {
                 Alarm  item  = (Alarm) listView.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(view.getContext().getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + item.getDescription(), Toast.LENGTH_LONG)
-                        .show();
+                Intent intent = new Intent(FragmentFirst.this.getActivity(), AlertDetailsActivity.class);
+                intent.putExtra("alertSelected", item);
+                FragmentFirst.this.getActivity().startActivity(intent);
+
+                //Toast.makeText(view.getContext().getApplicationContext(),
+                //        "Position :" + itemPosition + "  ListItem : " + item.getDescription(), Toast.LENGTH_LONG)
+                //        .show();
 
             }
 

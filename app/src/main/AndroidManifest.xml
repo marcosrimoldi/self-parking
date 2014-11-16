@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -51,13 +50,18 @@
         <activity
             android:name=".AddAlarmActivity"
             android:label="@string/title_activity_add_alarm"
-            android:parentActivityName=".AlertListViewActivity">
+            android:parentActivityName=".AlertListViewActivity" >
+        </activity>
+        <activity
+            android:name=".AlertDetailsActivity"
+            android:label="@string/title_alert_details"
+            android:parentActivityName=".AlertListViewActivity" >
         </activity>
 
         <!-- Because android:exported is set to "false", the service is only available to this app. -->
         <service
             android:name=".LocationPullService"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!--
         This receiver works on BOOT but currently the service is being started from AlertListViewActivity onCreate

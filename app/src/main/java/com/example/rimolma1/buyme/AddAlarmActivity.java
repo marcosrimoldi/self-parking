@@ -123,7 +123,7 @@ public class AddAlarmActivity extends ActionBarActivity implements AdapterView.O
                 alertJSON.put("businessArea", addressObj.getAdminArea());
                 alertJSON.put("latitude", Double.toString(addressObj.getLatitude()));
                 alertJSON.put("longitude", Double.toString(addressObj.getLongitude()));
-                alertJSON.put("creatorId", selectedUser.getId());
+                alertJSON.put("creatorId", Constants.userID);
                 alertJSON.put("title", "title");
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
