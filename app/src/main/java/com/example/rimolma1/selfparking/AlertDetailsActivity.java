@@ -1,4 +1,4 @@
-package com.example.rimolma1.buyme;
+package com.example.rimolma1.selfparking;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;

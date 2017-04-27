@@ -1,4 +1,4 @@
-package com.example.rimolma1.buyme;
+package com.example.rimolma1.selfparking;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;

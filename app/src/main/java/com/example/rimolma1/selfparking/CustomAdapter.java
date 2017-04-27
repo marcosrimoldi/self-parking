@@ -1,4 +1,4 @@
-package com.example.rimolma1.buyme;
+package com.example.rimolma1.selfparking;
 
 import android.app.Activity;
 import android.content.Context;

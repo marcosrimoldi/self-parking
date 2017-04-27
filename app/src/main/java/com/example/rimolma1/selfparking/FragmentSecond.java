@@ -1,4 +1,4 @@
-package com.example.rimolma1.buyme;
+package com.example.rimolma1.selfparking;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

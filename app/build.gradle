@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.example.rimolma1.buyme"
+        applicationId "com.example.rimolma1.selfparking"
         minSdkVersion 11
         targetSdkVersion 20
         versionCode 1

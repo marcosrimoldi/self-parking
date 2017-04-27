@@ -1,4 +1,4 @@
-package com.example.rimolma1.buyme;
+package com.example.rimolma1.selfparking;
 
 /**
  * Created by RIMOLMA1 on 10/31/2014.

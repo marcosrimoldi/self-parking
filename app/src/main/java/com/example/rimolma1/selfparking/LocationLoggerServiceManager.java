@@ -1,4 +1,4 @@
-package com.example.rimolma1.buyme;
+package com.example.rimolma1.selfparking;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
