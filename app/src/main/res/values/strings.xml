@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">buyMe</string>
+    <string name="app_name">selfParking</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_alert_list_view">buyMe</string>
+    <string name="title_activity_alert_list_view">selfParking</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Alerts...</string>
     <string name="action_settings">Settings</string>
