@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.rimolma1.buyme.AddAlarmActivity">
+
+    <TextView
+        android:text="@string/alert_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="10pt"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/textView"
+        android:hint="@string/alert_description_hint"/>
+
+    <TextView
+        android:text="@string/alert_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textPlace"
+        android:layout_below="@+id/editText"
+        android:textSize="10pt"/>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textPlace"
+        android:id="@+id/radio"
+        android:orientation="vertical">
+        <RadioButton android:id="@+id/radioPlaceAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/place_address_option"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton android:id="@+id/radioPlaceType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/place_type_option"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+    <TextView
+        android:text="@string/place_address_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/placeAddress"
+        android:layout_below="@+id/radio"
+        android:textSize="10pt"/>
+
+    <AutoCompleteTextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/placeAddress"
+        android:id="@+id/editPlaceAddress"/>
+
+    <TextView
+        android:text="@string/place_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/placeType"
+        android:layout_below="@+id/radio"
+        android:textSize="10pt"/>
+
+    <Spinner
+        android:id="@+id/placeTypesSpinner"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/placeAddress"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="@string/due_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dueDateTitle"
+        android:layout_below="@+id/editPlaceAddress"
+        android:textSize="10pt"
+        style="?android:attr/spinnerStyle"
+        android:onClick="showDatePickerDialog" />
+
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/timesLayout"
+        android:layout_below="@+id/dueDateTitle">
+        <TextView
+            android:text="@string/from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fromTime"
+            android:textSize="8pt"
+            style="?android:attr/spinnerStyle"
+            android:onClick="showTimePickerDialog"/>
+
+        <TextView
+            android:text="@string/to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toTime"
+            android:textSize="8pt"
+            style="?android:attr/spinnerStyle"
+            android:onClick="showTimePickerDialog"/>
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/select_user_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timesLayout"
+        android:id="@+id/userTitle"
+        android:textSize="10pt"/>
+
+    <Spinner
+        android:id="@+id/usersSpinner"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/userTitle"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
